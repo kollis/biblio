@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/biblio">
+  <ResourceLink global="global/biblio.override.properties" name="biblio.override.properties" type="java.lang.String"/>
+  
+  <!--  
+   * Make sure to add the below in server.xml
+  
+  <Environment name="global/biblio.override.properties" type="java.lang.String" value="/Users/sowjanya/installs/tomcat-7.0.32/conf/biblio.override.properties"/> 
+  
+  -->
+</Context>

@@ -1,0 +1,75 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+ 
+	<global-method-security pre-post-annotations="enabled">
+        <!-- AspectJ pointcut expression that locates our "post" method and applies security that way
+        <protect-pointcut expression="execution(* bigbank.*Service.post*(..))" access="ROLE_TELLER"/>
+        -->
+    </global-method-security>
+
+    <http use-expressions="true" disable-url-rewriting="true" access-denied-page="/accessDenied.jsp">
+    <form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?login_error=1"/>
+    	<intercept-url pattern="/login.jsp" access="permitAll" />
+    	<intercept-url pattern="/index.jsp" access="permitAll" />
+    	<intercept-url pattern="/welcome.htm" access="permitAll" />
+        <intercept-url pattern="/**" access="isAuthenticated()" />      
+        <form-login />
+        <logout logout-success-url="/index.jsp" />
+        <remember-me />
+        
+        <!--   <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/home.jsp" access="permitAll" /> -->
+        
+        
+     <!-- 
+        
+     The below patterns gives access only to Admin because the url is - http://localhost:70/SecTest/user/borrowBook.htm
+
+ 	<intercept-url pattern="/**/borrowBook.htm" access="hasRole('ROLE_ADMIN')" />
+    <intercept-url pattern="/*/borrowBook.htm" access="hasRole('ROLE_ADMIN')" />
+ 
+    The below patterns gives access only to Admin because the url is  - http://localhost:70/SecTest/borrowedBooks.htm
+ 
+    <intercept-url pattern="/borrowedBooks.htm" access="hasRole('ROLE_ADMIN')" />
+    <intercept-url pattern="/**/borrowedBooks.htm" access="hasRole('ROLE_ADMIN')" />
+ 
+    but this did not work (user without admin role was able to access)
+   
+    <intercept-url pattern="/*/borrowedBooks.htm" access="hasRole('ROLE_ADMIN')" />
+ 
+   The below patterns gives access only to Admin because the url is - http://localhost:70/SecTest/test/user/borrowBook.htm
+ 
+    <intercept-url pattern="/*/*/borrowBook.htm" access="hasRole('ROLE_ADMIN')"/>
+    <intercept-url pattern="/**/**/borrowBook.htm" access="hasRole('ROLE_ADMIN')"/>
+    <intercept-url pattern="/**/**/**/**/**/**/borrowBook.htm" access="hasRole('ROLE_ADMIN')"/>
+    <intercept-url pattern="/**/borrowBook.htm" access="hasRole('ROLE_ADMIN')"/>
+     
+  -->
+        
+        
+        
+<!--
+    Uncomment to enable X509 client authentication support
+        <x509 />
+-->
+        <!-- Uncomment to limit the number of sessions a user can have 
+        <session-management invalid-session-url="/invalid.htm">
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+        </session-management>-->
+
+    </http>
+ 
+	<authentication-manager>
+	  <authentication-provider>
+		<user-service>
+			<user name="sow" password="123" authorities="ROLE_USER" />
+		</user-service>
+	  </authentication-provider>
+	</authentication-manager>
+ 
+</beans:beans>
