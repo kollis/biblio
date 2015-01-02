@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE tiles-definitions PUBLIC  
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+<tiles-definitions>  
+    <definition name="biblio.tile.defaultLayout" template="/WEB-INF/jsp/tiles/layout.jsp">
+        <put-attribute name="title" value="Base Layout"/>
+        <put-attribute name="header" value="biblio.tile.header"/>
+        <put-attribute name="rightNav" value="biblio.tile.rightNav"/>
+        <put-attribute name="content" value="biblio.tile.defaultContent"/>
+        <put-attribute name="footer" value="biblio.tile.footer"/>
+    </definition>
+    
+    <definition name="biblio.tile.header" template="/WEB-INF/jsp/tiles/header.jsp"></definition>
+    
+    <definition name="biblio.tile.footer" template="/WEB-INF/jsp/tiles/footer.jsp"></definition>
+    
+    <definition name="biblio.tile.rightNav" template="/WEB-INF/jsp/tiles/rightNavTile.jsp"></definition>
+    
+    <definition name="biblio.tile.defaultContent" template="/WEB-INF/jsp/tiles/defaultContent.jsp"></definition>
+    
+	<definition name="biblio.tile.sampleTile" 
+    	preparer="com.sow.biblio.web.tiles.ResultsTilePreparer"
+    	template="/WEB-INF/jsp/tiles/sampleTile.jsp">
+   </definition>    
+      
+</tiles-definitions>  

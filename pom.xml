@@ -9,7 +9,8 @@
   <url>http://maven.apache.org</url>
   
    <properties>
-        <org.springframework.version>3.1.3.RELEASE</org.springframework.version>
+   		<org.springframework.version>3.2.1.RELEASE</org.springframework.version>
+        <org.springframework.security.version>3.1.3.RELEASE</org.springframework.security.version>
         <hibernate-core-version>3.6.8.Final</hibernate-core-version>
     </properties>
   
@@ -138,17 +139,17 @@
 <dependency>
     <groupId>org.springframework.security</groupId>
     <artifactId>spring-security-core</artifactId>      
-    <version>${org.springframework.version}</version>
+    <version>${org.springframework.security.version}</version>
 </dependency>
 <dependency>
     <groupId>org.springframework.security</groupId>
     <artifactId>spring-security-openid</artifactId>
-    <version>${org.springframework.version}</version>
+    <version>${org.springframework.security.version}</version>
 </dependency>
  <dependency>
         <groupId>org.springframework.security</groupId>
         <artifactId>spring-security-config</artifactId>
-        <version>${org.springframework.version}</version>
+        <version>${org.springframework.security.version}</version>
 </dependency>
 
 

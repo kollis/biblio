@@ -41,6 +41,13 @@
             org.springframework.web.context.ContextLoaderListener
         </listener-class>
 	</listener>
+	
+	 <jsp-config> 
+        <jsp-property-group> 
+            <url-pattern>*.jsp</url-pattern> 
+            <include-prelude>/WEB-INF/jsp/auto-include/include-prelude.jsp</include-prelude> 
+        </jsp-property-group>
+    </jsp-config>
 
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
