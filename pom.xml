@@ -56,6 +56,11 @@
     <artifactId>spring-aop</artifactId>
     <version>${org.springframework.version}</version>
 </dependency>
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-aspects</artifactId>
+    <version>${org.springframework.version}</version>
+ </dependency>
 <!-- Application Context 
     (depends on spring-core, spring-expression, spring-aop, spring-beans)
     This is the central artifact for Spring's Dependency Injection Container

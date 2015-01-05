@@ -14,6 +14,13 @@
                 http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
                 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
                 
+    <context:annotation-config />
+    <tx:annotation-driven />
+    <tx:annotation-driven mode="aspectj" transaction-manager="transactionManager" />
+    
+    <context:component-scan base-package="com.sow.biblio.service" />
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+                
        <bean id="applicationProperties" class="com.sow.biblio.web.util.SowProperties">
         <property name="resources">
             <list>
@@ -28,5 +35,42 @@
             </list>
         </property>
     </bean>
-               
+    
+     <!-- use applicationProperties to resolve ${property} references -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="properties" ref="applicationProperties" />
+    </bean>
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${jdbc.driver.class}" />
+        <property name="url" value="${jdbc.connection.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+    </bean>
+
+    <!-- entityManagerFactory -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="jpaVendorAdapter">
+            <bean  class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="database" value="ORACLE" />
+                <property name="databasePlatform" value="${hibernate.dialect}" />
+                <property name="showSql" value="${hibernate.show_sql}" />
+                <property name="generateDdl" value="false" />
+            </bean>
+        </property>
+    </bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+	   <property name="entityManagerFactory" ref="entityManagerFactory"/>
+	   <property name="dataSource" ref="dataSource"/>
+	   <property name="jpaDialect">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
+	   </property>
+	   <qualifier value="biblioService"/>	   
+	</bean>
+	
+	<bean id="bookService" class="com.sow.biblio.service.BookService">
+	</bean>
+              
 </beans>
