@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sow.biblio.service.BookService;
 import com.sow.biblio.service.model.Book;
+//import com.sow.biblio.service.model.CustomBook;
 
 @Controller
 
@@ -33,4 +34,27 @@ public class BookController {
 		return "sample";
 	}
 
+/*	@RequestMapping("/getAllBooks.htm")
+	public String getAllBooks(ModelMap model) {
+		
+		List<Book> bookList = bookService.getAllBooks();
+					
+		for (Book book : bookList) {
+			System.out.println("\n*****Book Name, AuthorName:" + book.getBookName() + ", " + book.getAuthorName());
+		}
+			
+		return "sample";
+	} */
+	
+/*	@RequestMapping("/getAllBooks1.htm")
+	public String getAllBooks1(ModelMap model) {
+		
+		List<CustomBook> bookList = bookService.getSpecificColumnsAllBooks();
+					
+		for (CustomBook book : bookList) {
+			System.out.println("\n*****Id, Book Name:" + book.getBookId() + ", " + book.getBookName());
+		}
+			
+		return "sample";
+	}*/
 }

@@ -7,6 +7,18 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
 		  <class>com.sow.biblio.service.model.Book</class>
+		
+		<!--   <class>com.sow.biblio.service.model.CustomBook</class>
+		  <class>com.sow.biblio.service.model.Department</class>
+		
+		
+		  <class>com.sow.biblio.service.model.Employee</class>
+		  <class>com.sow.biblio.service.model.Employee1</class>
+		  <class>com.sow.biblio.service.model.Employee2</class>
+		  <class>com.sow.biblio.service.model.Department2</class>
+		  
+		  <class>com.sow.biblio.service.model.Employee3</class>
+		  <class>com.sow.biblio.service.model.Department3</class>   --> 
 
 		<properties>
 
@@ -17,13 +29,27 @@
 			<property name="hibernate.format_sql" value="false" />
 
 			<property name="hibernate.query.substitutions" value="true" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+			
+			<property name="hibernate.jdbc.fetch_size" value="25" />
+			
+			<property name="hibernate.jdbc.batch_size" value="4" />
+			<property name="hibernate.order_inserts" value="true"/>
+			
 
 			<!-- 2nd level cache Disabled -->
 			<property name="hibernate.cache.use_second_level_cache"
 				value="false" />
 			<property name="hibernate.cache.use_query_cache" value="false" />
 			<property name="hibernate.generate_statistics" value="false" />
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			<!--  -->
 			<!-- 2nd level cache
 			<property name="hibernate.cache.use_second_level_cache" value="true"/>

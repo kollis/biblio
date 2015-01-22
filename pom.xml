@@ -273,7 +273,7 @@
     
     <dependency>
             <groupId>com.sow</groupId>
-            <artifactId>biblioService</artifactId>
+            <artifactId>biblioService2</artifactId>
              <version>1.0-SNAPSHOT</version>
         </dependency>
 
